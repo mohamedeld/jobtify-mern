@@ -1,12 +1,12 @@
 import Wrapper from "../assets/wrappers/LandingPage"
-import logo from "../assets/imgs/logo.svg";
 import main from "../assets/imgs/main.svg"
 import { Link } from "react-router-dom";
+import { Logo } from "../components";
 const Landing = () => {
   return (
     <Wrapper>
       <nav>
-        <img src={logo} alt="jobify logo" className="logo"/>
+        <Logo/>
       </nav>
       <div className="container page">
         <div className="info">
