@@ -1,29 +1,32 @@
-import Wrapper from '../assets/wrappers/Navbar'
-import {FaAlignLeft} from "react-icons/fa"
-import Logo from './Logo'
-import { useDashboardCtx } from '../context/DashboradCtx';
+import Wrapper from "../assets/wrappers/Navbar";
+import { FaAlignLeft } from "react-icons/fa";
+import Logo from "./Logo";
+import { useDashboardCtx } from "../context/DashboradCtx";
+import LogoutContainer from "./LogoutContainer";
+import ThemeToggle from "./ThemeToggle";
 const Navbar = () => {
-  const {user,
-    showSidebar,
-    isDarkTheme,
-    toggleShowSidebar,
-    toggleIsDarkTheme,
-    logoutUser} = useDashboardCtx();
-    
+  const { toggleShowSidebar } = useDashboardCtx();
   return (
     <Wrapper>
       <div className="nav-center">
-        <button type="button" className='toggle-btn' onClick={toggleShowSidebar}>
-          <FaAlignLeft/>
+        <button
+          type="button"
+          className="toggle-btn"
+          onClick={toggleShowSidebar}
+        >
+          <FaAlignLeft />
         </button>
         <div>
-          <Logo/>
-          <h4 className='logo-text'>Dashboard</h4>
+          <Logo />
+          <h4 className="logo-text">Dashboard</h4>
         </div>
-        <div className='btn-container'>toggle/logout</div>
+        <div className="btn-container">
+          <ThemeToggle/>
+          <LogoutContainer />
+        </div>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

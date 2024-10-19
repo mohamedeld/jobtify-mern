@@ -27,7 +27,7 @@ const SmallSidebar = () => {
               
               const {text,path,icon} = link;
               return (
-                <NavLink to={path} key={text} className="nav-link" onClick={toggleShowSidebar}>
+                <NavLink to={path} key={text} className="nav-link" onClick={toggleShowSidebar} end>
                   <span className='icon'>{icon}</span>
                   {text}
                 </NavLink>
