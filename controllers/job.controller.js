@@ -20,9 +20,9 @@ const getSingleJob = async (req,res)=>{
         message:"id is not provided"
       })
     }
-    const Job = await Job.findById(id);
+    const job = await Job.findById(id);
     res.status(200).json({
-      Job
+      job
     }) 
   }catch(error){
     res.status(500).json({
@@ -34,13 +34,14 @@ const getSingleJob = async (req,res)=>{
 const createSingleJob = async (req,res)=>{
  
   try{
-    const Job = await Job.create(req.body);
+    const job = await Job.create(req.body);
     res.status(200).json({
-      Job
+      job
     }) 
   }catch(error){
+    console.log(error);
     res.status(500).json({
-      message:error
+      message:error?.message
     })
   }
 } 
@@ -53,9 +54,9 @@ const updateSingleJob = async (req,res)=>{
         message:"id is not provided"
       })
     }
-    const Job = await Job.findByIdAndUpdate(id,req.body,{new:true});
+    const job = await Job.findByIdAndUpdate(id,req.body,{new:true});
     res.status(200).json({
-      Job
+      job
     }) 
   }catch(error){
     res.status(500).json({
@@ -71,7 +72,7 @@ const DeleteSingleJob = async (req,res)=>{
         message:"id is not provided"
       })
     }
-    const Job = await Job.findByIdAndDelete(id);
+    const job = await Job.findByIdAndDelete(id);
     res.status(200).json({
       message:'deleted successfully'
     }) 

@@ -5,6 +5,8 @@ import morgan from "morgan";
 import {nanoid} from "nanoid";
 import mongoose from "mongoose";
 import jobRoutes from "./routes/job.route.js";
+import globalErrorHandler from "./controllers/error.controller.js"
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -13,14 +15,8 @@ app.use(express.json());
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'))
 }
-app.use("/api/v1",jobRoutes)
-app.use('*', (req, res) => {
-  res.status(404).json({ msg: 'not found' });
-});
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({ msg: 'something went wrong' });
-});
+app.use("/api/v1/job",jobRoutes)
+
 async function connectToDBAndServer(){
   try{
     await mongoose.connect(process.env.DB_URL).then(()=>{
@@ -36,3 +32,8 @@ async function connectToDBAndServer(){
   }
 }
 connectToDBAndServer();
+
+app.use('*', (req, res) => {
+  res.status(404).json({ msg: 'not found' });
+});
+app.use(globalErrorHandler);
