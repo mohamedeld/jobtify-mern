@@ -9,3 +9,15 @@ export const JOB_TYPE = {
   PART_TIME:'part-time',
   INTERNSHIP:'internship'
 }
+
+export const JOB_SORT_BY = {
+  NEWSET_FIST:'newest',
+  OLDEST_FIRST:'oldest',
+  ASCENDING:'a-z',
+  DESCENDING:'z-a'
+}
+
+export const USER_ROLE = {
+  USER:'user',
+  ADMIN:'admin'
+}

@@ -5,6 +5,8 @@ import morgan from "morgan";
 import {nanoid} from "nanoid";
 import mongoose from "mongoose";
 import jobRoutes from "./routes/job.route.js";
+import userRoutes from "./routes/user.route.js";
+
 import globalErrorHandler from "./controllers/error.controller.js"
 
 const app = express();
@@ -16,6 +18,7 @@ if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'))
 }
 app.use("/api/v1/job",jobRoutes)
+app.use("/api/v1/user",userRoutes)
 
 async function connectToDBAndServer(){
   try{
