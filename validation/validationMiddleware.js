@@ -48,3 +48,9 @@ export const validateUserInput = withValidationErrors([
   body('password').notEmpty().withMessage("password is required").isStrongPassword().withMessage("password should be strong"),
   body('location').notEmpty().withMessage("location is required"),
 ]);
+
+export const validateLoginInput = withValidationErrors([
+  body('email').notEmpty().withMessage("email is required").isEmail().withMessage("please enter a valid email"),
+  body('password').notEmpty().withMessage("password is required")
+
+])
